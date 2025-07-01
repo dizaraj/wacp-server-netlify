@@ -6,6 +6,7 @@ import { Resend } from "resend";
 import admin from "firebase-admin";
 import serverless from "serverless-http";
 import path from "path";
+import fs from "fs";
 
 // --- Load Service Account ---
 // In a serverless environment, we need to handle the path carefully.
@@ -15,8 +16,12 @@ if (process.env.FIREBASE_SERVICE_ACCOUNT) {
     serviceAccount = JSON.parse(Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT, 'base64').toString('utf-8'));
 } else {
     // This path is for local development
-    const serviceAccountPath = path.resolve(process.cwd(), 'serviceAccountKey.json');
-    serviceAccount = (await import(serviceAccountPath, { assert: { type: 'json' } })).default;
+    const serviceAccountPath = path.resolve(
+      process.cwd(),
+      "serviceAccountKey.json"
+    );
+    const serviceAccountFile = fs.readFileSync(serviceAccountPath, "utf8");
+    serviceAccount = JSON.parse(serviceAccountFile);
 }
 
 // --- Initialize Firebase Admin SDK ---
