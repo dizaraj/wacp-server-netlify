@@ -1,0 +1,11 @@
+[build]
+  # This is the directory where your static files (like index.html) are.
+  publish = "."
+  # This is the directory where your serverless functions are.
+  functions = "netlify/functions"
+
+[[redirects]]
+  # This rule rewrites all requests from /api/* to your serverless function.
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200 

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Pro Chat - Complete Customer Engagement</title>
+
+    <!-- PayPal SDK with your Client ID. -->
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=AY3L5-pxJBJyRKYJS32A7Z0SpFU8IgPKS46h6kq7iSQZ80fqtUa80tWQY0pcWLLLcqUi9tou-J8FFEOG&currency=USD"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="text-gray-700">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                <i class="fab fa-whatsapp text-white text-3xl"></i>
+                <span>WhatsApp Pro</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-600 hover:text-green-600 font-medium">Home</a>
+                <a href="#features" class="text-gray-600 hover:text-green-600 font-medium">Features</a>
+                <a href="#pricing" class="text-gray-600 hover:text-green-600 font-medium">Pricing</a>
+                <a href="#contact" class="text-gray-600 hover:text-green-600 font-medium">Contact</a>
+            </div>
+            <a href="#pricing"
+                class="hidden md:block bg-green-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-600 transition">Get
+                License</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="py-20 md:py-32 hero-section">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+                    Engage Customers Directly <br> with <span class="text-green-500">WhatsApp Chat Pro</span>
+                </h1>
+                <p class="mt-6 text-lg md:text-xl text-white max-w-3xl mx-auto">
+                    Integrate a powerful WhatsApp chat widget on your website. Connect with your visitors in real-time,
+                    provide instant support, and drive conversions.
+                </p>
+                <a href="#pricing"
+                    class="mt-10 inline-block bg-green-500 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-green-600 transition-transform hover:scale-105">
+                    Unlock Pro Features Now
+                </a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl text-center font-bold mb-4">Why Choose WhatsApp Pro?</h2>
+                <p class="section-subtitle text-center">Everything you need for seamless customer communication.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                    <div class="card p-8 text-center hover:shadow-xl hover:-translate-y-1">
+                        <i class="fas fa-bolt text-green-500 text-4xl"></i>
+                        <h3 class="text-xl font-bold mt-4">Instant Setup</h3>
+                        <p class="mt-2 text-gray-600">Get up and running in minutes with a simple installation process.
+                        </p>
+                    </div>
+                    <div class="card p-8 text-center hover:shadow-xl hover:-translate-y-1">
+                        <i class="fas fa-users text-green-500 text-4xl"></i>
+                        <h3 class="text-xl font-bold mt-4">Multiple Agents</h3>
+                        <p class="mt-2 text-gray-600">Add multiple team members to your chat widget and assign them to
+                            different departments.
+                        </p>
+                    </div>
+                    <div class="card p-8 text-center hover:shadow-xl hover:-translate-y-1">
+                        <i class="fas fa-headset text-green-500 text-4xl"></i>
+                        <h3 class="text-xl font-bold mt-4">Direct Support</h3>
+                        <p class="mt-2 text-gray-600">Provide instant, real-time support directly through the world's
+                            most popular messaging app.</p>
+                    </div>
+                    <div class="card p-8 text-center hover:shadow-xl hover:-translate-y-1">
+                        <i class="fas fa-paint-brush text-green-500 text-4xl"></i>
+                        <h3 class="text-xl font-bold mt-4">Customizable Widget</h3>
+                        <p class="mt-2 text-gray-600">Customize the chat widget's appearance to perfectly match your
+                            brand's style.</p>
+                    </div>
+                    <div class="card p-8 text-center hover:shadow-xl hover:-translate-y-1">
+                        <i class="fas fa-dollar-sign text-green-500 text-4xl"></i>
+                        <h3 class="text-xl font-bold mt-4">One-Time Payment</h3>
+                        <p class="mt-2 text-gray-600">No subscriptions, no hidden fees. Pay once and own it for life.
+                        </p>
+                    </div>
+                    <div class="card p-8 text-center hover:shadow-xl hover:-translate-y-1">
+                        <i class="fas fa-shield-alt text-green-500 text-4xl"></i>
+                        <h3 class="text-xl font-bold mt-4">Secure & Reliable</h3>
+                        <p class="mt-2 text-gray-600">Built for performance and security, ensuring your customer data is
+                            safe.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-20 bg-green">
+            <div class="container mx-auto px-6 w-full max-w-lg">
+                <h2 class="text-3xl text-center font-bold mb-4">Get Your Lifetime License</h2>
+                <p class="section-subtitle text-center">A single, simple plan that unlocks all pro features forever. Pay
+                    securely with your preferred method.</p>
+                <div class="justify-center mt-8">
+                    <div id="purchaseCard" class="card p-6 sm:p-8">
+                        <h3 class="text-2xl text-center font-bold text-gray-800">Lifetime Pro</h3>
+                        <div class="text-5xl text-center font-bold my-6">
+                            $49 <span class="text-xl font-normal text-gray-500">/ lifetime</span>
+                        </div>
+                        <div class="mt-8 space-y-4">
+                            <div>
+                                <label for="domain" class="block text-sm font-medium text-gray-700">Your Primary
+                                    Domain</label>
+                                <input type="text" id="domain" placeholder="e.g., yourwebsite.com"
+                                    class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Your PayPal
+                                    Email</label>
+                                <input type="email" id="email" placeholder="you@example.com"
+                                    class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <!-- PayPal button will be rendered here -->
+                            <div id="paypal-button-container"></div>
+                            <p id="formError" class="text-red-500 text-sm mt-2 text-center hidden">Please fill out both
+                                your
+                                domain and email before purchasing.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="licenseCard" class="card p-6 sm:p-8 text-center hidden">
+                    <i class="fas fa-check-circle" style="font-size: 3rem; color: #10B981;"></i>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mt-4">Purchase Successful!</h2>
+                    <p class="text-gray-600 mt-2 mb-6">Your license key has been generated and sent to your email.</p>
+                    <div class="license-key-area p-4 rounded-lg">
+                        <p class="font-medium text-gray-700">Your Domain:</p>
+                        <p id="licensedDomain" class="font-semibold text-lg mb-4"></p>
+                        <p class="font-medium text-gray-700">Your License Key:</p>
+                        <div class="flex items-center justify-center bg-white p-3 rounded-md mt-1 border">
+                            <pre id="licenseKey" class="text-lg font-mono mr-4"></pre>
+                            <button id="copyButton" title="Copy to Clipboard">
+                                <i class="far fa-copy text-gray-600 hover:text-indigo-600"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p id="copyFeedback" class="text-green-600 text-sm mt-2 h-4"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6 max-w-xl">
+                <h2 class="text-3xl text-center font-bold mb-4">Get In Touch</h2>
+                <p class="section-subtitle text-center">Have questions? We'd love to hear from you. Fill out the form
+                    below or use
+                    the chat button.</p>
+                <div class="card mt-12 p-8">
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                            <input type="text" id="name" name="name" required
+                                class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="contactEmail" class="block text-sm font-medium text-gray-700">Email
+                                Address</label>
+                            <input type="email" id="contactEmail" name="email" required
+                                class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                            <input type="text" id="subject" name="subject" required
+                                class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea id="message" name="message" rows="4" required
+                                class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                class="w-full bg-green-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-green-600 transition text-lg">Send
+                                Message</button>
+                        </div>
+                    </form>
+                    <p id="contactFeedback" class="text-center mt-4 h-5"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 WhatsApp Chat Pro. All Rights Reserved.</p>
+            <p>Made with ❤️ by <strong><a href="https://dizaraj.github.io/" target="_blank">Dizaraj Dey</a></strong></p>
+        </div>
+    </footer>
+
+
+    <!-- Floating Action Button -->
+    <div class="fab-container">
+        <div id="fab" class="fab">
+            <i class="far fa-comment-dots"></i>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content relative">
+            <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
+                <i class="fas fa-times fa-lg"></i>
+            </button>
+            <h3 class="text-xl font-semibold text-center mb-6">Contact Us</h3>
+            <div>
+                <a href="https://m.me/dizaraj" target="_blank" rel="noopener noreferrer" class="chat-option">
+                    <i class="fab fa-facebook-messenger text-white"></i>
+                    <span>Chat on Messenger</span>
+                </a>
+                <a href="https://wa.me/8801717035081" target="_blank" rel="noopener noreferrer" class="chat-option">
+                    <i class="fab fa-whatsapp text-white"></i>
+                    <span>Chat on WhatsApp</span>
+                </a>
+                <a href="https://t.me/dizaraj" target="_blank" rel="noopener noreferrer" class="chat-option">
+                    <i class="fab fa-telegram text-white"></i>
+                    <span>Chat on Telegram</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // --- Licensing Section Elements ---
+            const purchaseCard = document.getElementById('purchaseCard');
+            const licenseCard = document.getElementById('licenseCard');
+            const domainInput = document.getElementById('domain');
+            const emailInput = document.getElementById('email');
+            const formError = document.getElementById('formError');
+            const licensedDomain = document.getElementById('licensedDomain');
+            const licenseKeyEl = document.getElementById('licenseKey');
+            const copyButton = document.getElementById('copyButton');
+            const copyFeedback = document.getElementById('copyFeedback');
+
+            // --- Modal Elements ---
+            const fab = document.getElementById('fab');
+            const contactModal = document.getElementById('contactModal');
+            const closeModal = document.getElementById('closeModal');
+
+            // --- Contact Form Elements ---
+            const contactForm = document.getElementById('contactForm');
+            const contactFeedback = document.getElementById('contactFeedback');
+
+            // --- PayPal Integration ---
+            if (typeof paypal !== 'undefined') {
+                paypal.Buttons({
+                    onClick: (data, actions) => {
+                        const domainValue = domainInput.value.trim();
+                        const emailValue = emailInput.value.trim();
+
+                        if (!domainValue || !emailValue) {
+                            formError.classList.remove('hidden');
+                            return actions.reject();
+                        } else {
+                            formError.classList.add('hidden');
+                            return actions.resolve();
+                        }
+                    },
+                    // *** NEW: Call your backend to create the order ***
+                    createOrder: () => {
+                        return fetch("/api/create-order", { // Calls your new server endpoint
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        })
+                            .then((response) => response.json())
+                            .then((order) => order.id);
+                    },
+
+                    // *** NEW: Call your backend to capture the order ***
+                    onApprove: (data) => {
+                        const domainValue = domainInput.value.trim();
+                        const emailValue = emailInput.value.trim();
+
+                        return fetch("/api/capture-order", { // Calls your second server endpoint
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                orderID: data.orderID,
+                                domain: domainValue,
+                                email: emailValue
+                            })
+                        })
+                            .then((response) => {
+                                if (!response.ok) {
+                                    throw new Error(`Server responded with status: ${response.status}`);
+                                }
+                                return response.json();
+                            })
+                            .then((orderData) => {
+                                console.log('Capture result', orderData);
+                                // The server now returns the license key after successful capture
+                                showLicenseCard(domainValue, orderData.licenseKey);
+                            })
+                            .catch(err => {
+                                console.error('Error capturing order:', err);
+                                alert(`Your payment was successful, but there was an issue generating your license. Please contact support with your Order ID: ${data.orderID}`);
+                            });
+                    },
+                    onError: (err) => {
+                        console.error('An error occurred during the transaction:', err);
+                        alert('An error occurred with your payment. Please try again or contact support.');
+                    }
+                }).render('#paypal-button-container');
+            } else {
+                console.error('PayPal SDK not loaded.');
+                const paypalContainer = document.getElementById('paypal-button-container');
+                if (paypalContainer) {
+                    paypalContainer.innerHTML = '<p class="text-red-500 text-center">Could not load payment options. Please refresh the page or contact support.</p>';
+                }
+            }
+
+
+            function showLicenseCard(domain, key) {
+                licensedDomain.textContent = domain;
+                licenseKeyEl.textContent = key;
+                purchaseCard.classList.add('hidden');
+                licenseCard.classList.remove('hidden');
+            }
+
+            // --- Copy to Clipboard Logic ---
+            if (copyButton) {
+                copyButton.addEventListener('click', () => {
+                    const keyToCopy = licenseKeyEl.textContent;
+                    navigator.clipboard.writeText(keyToCopy).then(() => {
+                        copyFeedback.textContent = 'Copied!';
+                        copyButton.innerHTML = '<i class="fas fa-check text-green-600"></i>';
+                        setTimeout(() => {
+                            copyFeedback.textContent = '';
+                            copyButton.innerHTML = '<i class="far fa-copy text-gray-600 hover:text-indigo-600"></i>';
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                        copyFeedback.textContent = 'Failed to copy';
+                    });
+                });
+            }
+
+            // --- Modal Logic ---
+            if (fab) {
+                fab.addEventListener('click', () => contactModal.classList.add('active'));
+                closeModal.addEventListener('click', () => contactModal.classList.remove('active'));
+                contactModal.addEventListener('click', (event) => {
+                    if (event.target === contactModal) {
+                        contactModal.classList.remove('active');
+                    }
+                });
+            }
+
+            // --- Contact Form Logic ---
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    contactFeedback.textContent = 'Sending...';
+                    // Reset classes for feedback text
+                    contactFeedback.className = 'text-center mt-4 h-5 text-blue-500';
+
+                    // Get form data
+                    const formData = new FormData(contactForm);
+                    const data = Object.fromEntries(formData.entries());
+
+                    // Send the data to your backend server
+                    fetch('/api/send-email', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    })
+                        .then(response => {
+                            // If the server response is not OK, we need to handle the error
+                            if (!response.ok) {
+                                return response.json().then(err => {
+                                    // Throw an error with the message from the server
+                                    throw new Error(err.message || 'An unknown error occurred.');
+                                });
+                            }
+                            return response.json();
+                        })
+                        .then(result => {
+                            // Handle success from the server
+                            contactFeedback.textContent = result.message;
+                            contactFeedback.className = 'text-center mt-4 h-5 text-green-600';
+                            contactForm.reset();
+                        })
+                        .catch(err => {
+                            // Handle any errors from the fetch or the server
+                            contactFeedback.textContent = err.message;
+                            contactFeedback.className = 'text-center mt-4 h-5 text-red-500';
+                        })
+                        .finally(() => {
+                            // Clear the feedback message after 5 seconds
+                            setTimeout(() => contactFeedback.textContent = '', 5000);
+                        });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

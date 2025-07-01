@@ -1,0 +1,121 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    /* slate-50 */
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #075E54, #128C7E);
+}
+
+.card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.fab-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+}
+
+.fab {
+    background-color: #25D366;
+    color: white;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.2s;
+}
+
+.fab:hover {
+    transform: scale(1.1);
+    background-color: #1EBE5A;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    width: 90%;
+    max-width: 400px;
+    transform: translateY(20px);
+    transition: transform 0.3s;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.chat-option {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+    text-decoration: none;
+    color: #1f2937;
+    /* gray-800 */
+    transition: background-color 0.2s;
+}
+
+.chat-option:hover {
+    background-color: #f3f4f6;
+    /* gray-100 */
+}
+
+.chat-option i {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.bg-green {
+    background-color: #25d366;
+}
+
+.license-key-area {
+    background-color: #eef2ff;
+    /* indigo-50 */
+    border: 2px dashed #6366f1;
+    /* indigo-500 */
+    color: #312e81;
+    /* indigo-900 */
+}
+
+.section-title {
+    @apply text-3xl font-bold text-gray-800 text-center;
+}
+
+.section-subtitle {
+    @apply text-lg text-gray-600 text-center mt-2;
+}
