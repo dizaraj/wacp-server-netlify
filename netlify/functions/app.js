@@ -399,7 +399,7 @@ router.get("/verify", checkDbConnection, async (req, res) => {
 });
 
 // Mount the router to the path that Netlify will use.
-app.use("/.netlify/functions/api", router);
+app.use("/api", router);
 
 // Use module.exports.handler for CommonJS compatibility with serverless-http
 module.exports.handler = serverless(app);
