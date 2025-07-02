@@ -8,4 +8,4 @@
   # This rule rewrites all requests from /api/* to your serverless function.
   from = "/api/*"
   to = "/.netlify/functions/api/:splat"
-  status = 200 
+  status = 200
