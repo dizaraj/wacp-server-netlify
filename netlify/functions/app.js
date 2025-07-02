@@ -1,11 +1,11 @@
 // netlify/functions/api.js
-import express from "express";
-import fetch from "node-fetch";
-import "dotenv/config";
-import { Resend } from "resend";
-import admin from "firebase-admin";
-import serverless from "serverless-http";
-import path from "path";
+const express = require("express");
+const fetch = require("node-fetch");
+require("dotenv").config();
+const { Resend } = require("resend");
+const admin = require("firebase-admin");
+const serverless = require("serverless-http");
+const path = require("path");
 
 // --- Load Service Account from Environment Variable ---
 // On Netlify, the service account JSON is stored as a base64 encoded environment variable.
