@@ -1,6 +1,8 @@
 // netlify/functions/api.js
 const express = require("express");
-const fetch = require("node-fetch");
+// FIX: Use a dynamic import for the ES-Module 'node-fetch' package.
+const fetch = (...args) =>
+  import("node-fetch").then(({ default: fetch }) => fetch(...args));
 require("dotenv").config();
 const { Resend } = require("resend");
 const admin = require("firebase-admin");
