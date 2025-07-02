@@ -103,7 +103,7 @@ const createLicense = async (licenseData) => {
  * @api {get} /status
  * @description Get the connection status of the server and database.
  */
-router.get("/status", (req, res) => {
+router.get("/api/status", (req, res) => {
   if (db) {
     res
       .status(200)
@@ -117,7 +117,7 @@ router.get("/status", (req, res) => {
  * @api {post} /license
  * @description Creates and stores a new license record in the database.
  */
-router.post("/license", async (req, res) => {
+router.post("/api/license", async (req, res) => {
   try {
     const { license, domain, email, amount } = req.body;
 
@@ -151,7 +151,7 @@ router.post("/license", async (req, res) => {
 });
 
 // 1. PayPal: Create Order
-router.post("/create-order", async (req, res) => {
+router.post("/api/create-order", async (req, res) => {
   try {
     const accessToken = await generateAccessToken();
     const url = `${base}/v2/checkout/orders`;
@@ -186,7 +186,7 @@ router.post("/create-order", async (req, res) => {
 });
 
 // 2. PayPal: Capture Order & Generate License
-router.post("/capture-order", async (req, res) => {
+router.post("/api/capture-order", async (req, res) => {
   try {
     const { orderID, domain, email } = req.body;
     const accessToken = await generateAccessToken();
@@ -257,7 +257,7 @@ router.post("/capture-order", async (req, res) => {
 });
 
 // 3. Contact Form: Send Email
-router.post("/send-email", async (req, res) => {
+router.post("/api/send-email", async (req, res) => {
   const { name, email, subject, message } = req.body;
 
   if (!name || !email || !subject || !message) {
@@ -282,7 +282,7 @@ router.post("/send-email", async (req, res) => {
 });
 
 // 4. License Verification
-router.get("/verify", async (req, res) => {
+router.get("/api/verify", async (req, res) => {
   try {
     const { domain } = req.query;
 
