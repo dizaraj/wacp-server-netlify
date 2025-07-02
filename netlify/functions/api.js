@@ -233,11 +233,9 @@ router.post("/capture-order", checkDbConnection, async (req, res) => {
     const { orderID, domain, email } = req.body;
 
     if (!orderID || !domain || !email) {
-      return res
-        .status(400)
-        .json({
-          error: "Missing required fields: orderID, domain, and email.",
-        });
+      return res.status(400).json({
+        error: "Missing required fields: orderID, domain, and email.",
+      });
     }
 
     const accessToken = await generateAccessToken();
@@ -398,7 +396,8 @@ router.get("/verify", checkDbConnection, async (req, res) => {
   }
 });
 
-// Mount the router to the path that Netlify will use.
+// *** FIX: Mount the router to the application's base API path ***
+// This should match the 'from' path in your netlify.toml redirects.
 app.use("/api", router);
 
 // Use module.exports.handler for CommonJS compatibility with serverless-http
