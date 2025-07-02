@@ -1,4 +1,4 @@
-// server.js
+// netlify/functions/api.js
 import express from "express";
 import fetch from "node-fetch";
 import "dotenv/config";
@@ -6,40 +6,42 @@ import { Resend } from "resend";
 import admin from "firebase-admin";
 import serverless from "serverless-http";
 import path from "path";
-import fs from "fs";
 
-// --- Load Service Account ---
-// In a serverless environment, we need to handle the path carefully.
-// For local testing, it's relative. For deployment, we'll use an env var.
+// --- Load Service Account from Environment Variable ---
+// On Netlify, the service account JSON is stored as a base64 encoded environment variable.
 let serviceAccount;
 if (process.env.FIREBASE_SERVICE_ACCOUNT) {
-    serviceAccount = JSON.parse(Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT, 'base64').toString('utf-8'));
-} else {
-    // This path is for local development
-    const serviceAccountPath = path.resolve(
-      process.cwd(),
-      "serviceAccountKey.json"
+  try {
+    serviceAccount = JSON.parse(
+      Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT, "base64").toString(
+        "utf-8"
+      )
     );
-    const serviceAccountFile = fs.readFileSync(serviceAccountPath, "utf8");
-    serviceAccount = JSON.parse(serviceAccountFile);
+  } catch (e) {
+    console.error("Error parsing Firebase Service Account JSON:", e);
+  }
+} else {
+  console.error("FIREBASE_SERVICE_ACCOUNT environment variable not set.");
 }
 
 // --- Initialize Firebase Admin SDK ---
+// Check if the app is already initialized to prevent errors during hot-reloading.
 if (!admin.apps.length) {
   try {
-      admin.initializeApp({
-          credential: admin.credential.cert(serviceAccount),
-      });
-      console.log("Firebase Admin SDK initialized successfully.");
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+    });
+    console.log("Firebase Admin SDK initialized successfully.");
   } catch (error) {
-      console.error("Error initializing Firebase Admin SDK:", error);
+    console.error("Error initializing Firebase Admin SDK:", error);
   }
 }
 const db = admin.firestore();
 
 // --- Initialize Express App ---
 const app = express();
-const router = express.Router(); // Use an Express Router
+// We use a router to keep the code clean and modular.
+const router = express.Router();
 
 router.use(express.json());
 
@@ -50,15 +52,13 @@ const {
   RESEND_API_KEY,
   FROM_EMAIL,
   ADMIN_EMAIL,
-  PORT,
 } = process.env;
 
 // --- Initialize Resend ---
 const resend = new Resend(RESEND_API_KEY);
 
 // --- PayPal Configuration ---
-// const base = "https://api-m.paypal.com"; // PayPal Live URL
-const base = "https://api-m.sandbox.paypal.com"; // PayPal Sandbox URL
+const base = "https://api-m.sandbox.paypal.com"; // Using Sandbox for testing
 
 // --- PayPal Access Token Generation ---
 const generateAccessToken = async () => {
@@ -77,6 +77,8 @@ const generateAccessToken = async () => {
     return data.access_token;
   } catch (error) {
     console.error("Failed to generate Access Token:", error);
+    // In a serverless function, it's better to throw to indicate a critical failure
+    throw new Error("Failed to generate PayPal Access Token.");
   }
 };
 
@@ -91,7 +93,6 @@ const createLicense = async (licenseData) => {
     return { success: true, id: docRef.id };
   } catch (error) {
     console.error("Error creating license in Firestore:", error);
-    // In a real app, you might want to retry or flag this for manual intervention
     return { success: false, error: error.message };
   }
 };
@@ -101,12 +102,8 @@ const createLicense = async (licenseData) => {
 /**
  * @api {get} /status
  * @description Get the connection status of the server and database.
- * @response 200 { "message": "Server is running and database is connected." }
- * @response 500 { "message": "Database connection failed." }
  */
 router.get("/status", (req, res) => {
-  // A simple check. For a more robust check, you could try a minimal read,
-  // but for this purpose, if the app initialized, we can consider it connected.
   if (db) {
     res
       .status(200)
@@ -119,15 +116,6 @@ router.get("/status", (req, res) => {
 /**
  * @api {post} /license
  * @description Creates and stores a new license record in the database.
- * @body {
- * "license": "string",
- * "domain": "string",
- * "email": "string",
- * "amount": number
- * }
- * @response 201 { "message": "License created successfully", "id": "document_id" }
- * @response 400 { "message": "Invalid input. All fields are required." }
- * @response 500 { "message": "Error creating license.", "error": "error_details" }
  */
 router.post("/license", async (req, res) => {
   try {
@@ -162,16 +150,6 @@ router.post("/license", async (req, res) => {
   }
 });
 
-/**
- * @api {get} /verify?domain=<domain_name>
- * @description Verifies a license by domain from the URL query and returns the license data.
- * @queryParam {string} domain The domain to verify.
- * @response 200 { license_data }
- * @response 400 { "message": "Domain is required for verification." }
- * @response 404 { "message": "No license found for the specified domain." }
- * @response 500 { "message": "Error verifying license.", "error": "error_details" }
- */
-
 // 1. PayPal: Create Order
 router.post("/create-order", async (req, res) => {
   try {
@@ -200,7 +178,7 @@ router.post("/create-order", async (req, res) => {
     });
 
     const data = await response.json();
-    res.json(data);
+    res.status(response.status).json(data);
   } catch (error) {
     console.error("Failed to create order:", error);
     res.status(500).json({ error: "Failed to create order." });
@@ -231,7 +209,6 @@ router.post("/capture-order", async (req, res) => {
         .toUpperCase()}-${new Date().getFullYear()}`;
       const transactionId = capturedData.id;
 
-      // --- Save license directly to Firestore using our internal function ---
       const licenseResult = await createLicense({
         license: generatedKey,
         domain: domain,
@@ -240,18 +217,13 @@ router.post("/capture-order", async (req, res) => {
         transactionId: transactionId,
       });
 
-      // Even if saving to DB fails, we proceed with sending emails
-      // because the payment was successful.
       if (!licenseResult.success) {
         console.error(
           "CRITICAL: Payment successful, but failed to save license to Firestore."
         );
-        // Optionally, send an alert to the admin here
       }
 
-      // --- Send Confirmation Emails using Resend ---
       try {
-        // 1. Send email to the customer
         await resend.emails.send({
           from: `"WhatsApp Pro Chat" <${FROM_EMAIL}>`,
           to: [email],
@@ -259,7 +231,6 @@ router.post("/capture-order", async (req, res) => {
           html: `<h1>Thank you for your purchase!</h1><p>Your license key and order details are below.</p><ul><li><strong>Order ID:</strong> ${licenseResult.id}</li><li><strong>Domain:</strong> ${domain}</li><li><strong>License Key:</strong> <code>${generatedKey}</code></li><li><strong>Transaction ID:</strong> ${transactionId}</li></ul><p>Thank you for choosing WhatsApp Pro Chat.</p>`,
         });
 
-        // 2. Send notification email to the admin with the new Order ID
         await resend.emails.send({
           from: `"Sales Notification" <${FROM_EMAIL}>`,
           to: [ADMIN_EMAIL],
@@ -275,7 +246,9 @@ router.post("/capture-order", async (req, res) => {
 
       res.status(200).json({ licenseKey: generatedKey });
     } else {
-      res.status(400).json({ error: "Payment not completed." });
+      res
+        .status(400)
+        .json({ error: "Payment not completed.", details: capturedData });
     }
   } catch (error) {
     console.error("Failed to capture order:", error);
@@ -349,8 +322,9 @@ router.get("/verify", async (req, res) => {
   }
 });
 
-// --- Start Server ---
-const port = PORT || 3000;
-app.listen(port, () =>
-  console.log(`Server running on http://localhost:${port}`)
-);
+// All your API routes are attached to the router.
+// We now mount the router to the path that Netlify will use.
+app.use("/.netlify/functions/api", router);
+
+// This is the magic that makes Express work with Netlify Functions.
+export const handler = serverless(app);
