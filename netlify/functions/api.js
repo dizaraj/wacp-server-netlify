@@ -251,12 +251,11 @@ router.post("/capture-order", checkDbConnection, async (req, res) => {
     const capturedData = await response.json();
 
     if (capturedData.status === "COMPLETED") {
-      const generatedKey = `WAPRO-${domain
-        .substring(0, 4)
-        .toUpperCase()}-${Math.random()
-        .toString(36)
-        .substring(2, 8)
-        .toUpperCase()}-${new Date().getFullYear()}`;
+      const generatedKey =
+        "PRO-" +
+        [...Array(4)]
+          .map(() => Math.random().toString(36).slice(2, 7).toUpperCase())
+          .join("-");
       const transactionId =
         capturedData.purchase_units[0].payments.captures[0].id;
 
