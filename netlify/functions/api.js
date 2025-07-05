@@ -1,6 +1,4 @@
-// netlify/functions/api.js
 const express = require("express");
-// FIX: Use a dynamic import for the ES-Module 'node-fetch' package.
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 require("dotenv").config();
@@ -58,6 +56,7 @@ const {
   RESEND_API_KEY,
   FROM_EMAIL,
   ADMIN_EMAIL,
+  PAYPAL_BASE_URL,
 } = process.env;
 
 // --- Initialize Resend ---
@@ -70,7 +69,7 @@ if (!resend) {
 }
 
 // --- PayPal Configuration ---
-const base = "https://api-m.sandbox.paypal.com"; // Using Sandbox for testing
+const base = PAYPAL_BASE_URL; // Using Sandbox for testing
 
 // --- PayPal Access Token Generation ---
 const generateAccessToken = async () => {
@@ -358,30 +357,36 @@ router.post("/send-email", async (req, res) => {
 // 4. License Verification
 router.get("/verify", checkDbConnection, async (req, res) => {
   try {
-    const { domain } = req.query;
+    // Destructure both key and domain from the query string
+    const { key, domain } = req.query;
 
-    if (!domain) {
+    // Validate that both key and domain are provided
+    if (!key || !domain) {
       return res
         .status(400)
-        .json({ message: "Domain is required for verification." });
+        .json({ message: "Key and domain are required for verification." });
     }
 
     const licensesRef = db.collection("licenses");
+    // Chain 'where' clauses to query for a document that matches both fields
     const snapshot = await licensesRef
+      .where("license", "==", key)
       .where("domain", "==", domain)
       .limit(1)
       .get();
 
+    // If no document matches both the key and domain
     if (snapshot.empty) {
       return res
         .status(404)
-        .json({ message: "No license found for the specified domain." });
+        .json({ verified: false, message: "Invalid license key or domain." });
     }
 
+    // If a match is found, prepare the response
     let responseData;
     snapshot.forEach((doc) => {
       const fullData = doc.data();
-      // Only return non-sensitive data
+      // Return non-sensitive data, confirming verification
       responseData = {
         license: fullData.license,
         domain: fullData.domain,
@@ -389,6 +394,7 @@ router.get("/verify", checkDbConnection, async (req, res) => {
       };
     });
 
+    // Send the successful response
     res.status(200).json(responseData);
   } catch (error) {
     console.error("Error in /verify endpoint:", error);
