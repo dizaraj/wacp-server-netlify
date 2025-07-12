@@ -4,9 +4,10 @@ body {
     /* slate-50 */
 }
 
-.hero-section {
+.hero-section, .download-section, .contact-section {
     background: linear-gradient(160deg, #000000, #2E052E);
 }
+
 
 .card {
     background-color: white;
