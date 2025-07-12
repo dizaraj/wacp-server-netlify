@@ -69,7 +69,7 @@ if (!resend) {
 }
 
 // --- PayPal Configuration ---
-const base = PAYPAL_BASE_URL; // Using Sandbox for testing
+const base = PAYPAL_BASE_URL; // Using Sandbox or Production URL from .env
 
 // --- PayPal Access Token Generation ---
 const generateAccessToken = async () => {
@@ -135,6 +135,26 @@ const checkDbConnection = (req, res, next) => {
 };
 
 // --- API Endpoints ---
+
+/**
+ * NEW: Endpoint to provide public configurations like the PayPal Client ID
+ * @api {get} /config
+ * @description Get public configuration variables.
+ */
+router.get("/config", (req, res) => {
+  if (PAYPAL_CLIENT_ID) {
+    res.status(200).json({ paypalClientId: PAYPAL_CLIENT_ID });
+  } else {
+    // This error will be logged in Netlify functions, not shown to the user.
+    console.error(
+      "PAYPAL_CLIENT_ID environment variable is not set on the server."
+    );
+    // Send a generic error to the client.
+    res
+      .status(500)
+      .json({ error: "Payment provider configuration is missing." });
+  }
+});
 
 /**
  * @api {get} /status
@@ -403,8 +423,7 @@ router.get("/verify", checkDbConnection, async (req, res) => {
   }
 });
 
-// *** FIX: Mount the router to the application's base API path ***
-// This should match the 'from' path in your netlify.toml redirects.
+// Mount the router to the application's base API path
 app.use("/api", router);
 
 // Use module.exports.handler for CommonJS compatibility with serverless-http

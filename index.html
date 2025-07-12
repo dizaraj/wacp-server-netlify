@@ -4,7 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Engage with customers directly on WhatsApp. Our tool helps you to convert visitor to customer, and grow your business.">
     <title>Floating WhatsApp Chat Pro - Complete Customer Engagement Solution</title>
+
+    <!-- Preconnect to Google Fonts for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YP1FCV937N"></script>
     <script>
@@ -15,15 +22,16 @@
         gtag('config', 'G-YP1FCV937N');
     </script>
 
-    <!-- PayPal SDK with your Client ID. -->
-    <script
-        src="https://www.paypal.com/sdk/js?client-id=AQKtYuiSpXRZE9nekRj6Wm2dbrKtc57Os5PD7BljYA_l0bR7NQqq74f1d5ijZ__5eJI2OMu90G2gm9MR&currency=USD"></script>
+    <!-- 
+      REMOVED: The static PayPal SDK script is no longer needed here.
+      It will be loaded dynamically by the script at the bottom of the page.
+    -->
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -32,8 +40,8 @@
     <!-- Header & Navigation -->
     <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-gray-800 flex items-center gap-2">
-                <i class="fab fa-whatsapp text-white text-3xl"></i>
+            <a href="/" class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                <i class="fab fa-whatsapp text-green-500 text-3xl"></i>
                 <span>WhatsApp Chat Pro</span>
             </a>
             <div class="hidden md:flex space-x-8">
@@ -44,7 +52,7 @@
                 <a href="#contact" class="text-gray-600 hover:text-green-600 font-medium">Contact</a>
             </div>
             <a href="#pricing"
-                class="hidden md:block bg-green-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-600 transition">Get
+                class="hidden md:block bg-green-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400 transition">Get
                 License</a>
         </nav>
     </header>
@@ -61,7 +69,7 @@
                     provide instant support, and drive conversions.
                 </p>
                 <a href="#pricing"
-                    class="mt-10 inline-block bg-green-500 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-green-600 transition-transform hover:scale-105">
+                    class="mt-10 inline-block bg-green-500 text-black px-10 py-4 rounded-full font-bold text-lg hover:bg-green-400 transition-transform hover:scale-105">
                     Unlock Pro Features Now
                 </a>
             </div>
@@ -122,10 +130,11 @@
                     Download the latest version of WhatsApp Chat Pro. Please refer to the documentation for installation
                     instructions.
                 </p>
-        
+
                 <div class="mt-12 space-y-6 max-w-4xl mx-auto">
                     <!-- Latest Version -->
-                    <div class="card flex flex-col md:flex-row items-center justify-between p-6 border-2 border-green-500">
+                    <div
+                        class="card flex flex-col md:flex-row items-center justify-between p-6 border-2 border-green-500">
                         <div class="mb-4 md:mb-0 text-center md:text-left">
                             <h3 class="text-xl font-bold text-gray-800">WhatsApp Chat Pro 1.1.0</h3>
                             <p class="text-sm text-gray-500 mt-1">Released: 2025-07-12 | Latest Version</p>
@@ -133,12 +142,12 @@
                         <div class="flex items-center gap-4">
                             <span class="text-sm text-gray-600 font-medium">(25.4 KB)</span>
                             <a href="https://github.com/dizaraj/floating-whatsapp-chat-pro-plugin/releases/download/v1.1.0/floating-wa-chat-pro-widget.zip"
-                                class="bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition-transform hover:scale-105 inline-block">
+                                class="bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-400 transition-transform hover:scale-105 inline-block">
                                 <i class="fas fa-download mr-2"></i>Download
                             </a>
                         </div>
                     </div>
-        
+
                     <!-- Previous Version -->
                     <div class="card flex flex-col md:flex-row items-center justify-between p-6 hover:shadow-lg">
                         <div class="mb-4 md:mb-0 text-center md:text-left">
@@ -155,13 +164,14 @@
                     </div>
                 </div>
                 <div class="text-center mt-8">
-                    <a href="https://github.com/dizaraj/floating-whatsapp-chat-pro-plugin/commits/v1.0.1" class="text-green-600 hover:underline font-medium">View Full Changelog</a>
+                    <a href="https://github.com/dizaraj/floating-whatsapp-chat-pro-plugin/commits/"
+                        class="text-green-600 hover:underline font-medium">View Full Changelog</a>
                 </div>
             </div>
         </section>
 
         <!-- Pricing Section -->
-        <section id="pricing" class="py-20 bg-green">
+        <section id="pricing" class="py-20 bg-green-100">
             <div class="container mx-auto px-6 w-full max-w-lg">
                 <h2 class="text-3xl text-center text-black font-bold mb-4">Get Your Lifetime License</h2>
                 <p class="section-subtitle text-center">A single, simple plan that unlocks all pro features forever. Pay
@@ -186,7 +196,10 @@
                         </div>
                         <div class="mt-8">
                             <!-- PayPal button will be rendered here -->
-                            <div id="paypal-button-container"></div>
+                            <div id="paypal-button-container" class="min-h-[50px]">
+                                <!-- Loading indicator -->
+                                <p class="text-center text-gray-500">Loading payment options...</p>
+                            </div>
                             <p id="formError" class="text-red-500 text-sm mt-2 text-center hidden">Please fill out both
                                 your
                                 domain and email before purchasing.</p>
@@ -245,7 +258,7 @@
                         </div>
                         <div>
                             <button type="submit"
-                                class="w-full bg-green-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-green-600 transition text-lg">Send
+                                class="w-full bg-green-500 text-black px-6 py-3 rounded-md font-semibold hover:bg-green-700 transition text-lg">Send
                                 Message</button>
                         </div>
                     </form>
@@ -280,15 +293,15 @@
             <h3 class="text-xl font-semibold text-center mb-6">Contact Us</h3>
             <div>
                 <a href="https://m.me/dizaraj" target="_blank" rel="noopener noreferrer" class="chat-option">
-                    <i class="fab fa-facebook-messenger text-white"></i>
+                    <i class="fab fa-facebook-messenger text-blue-600"></i>
                     <span>Chat on Messenger</span>
                 </a>
                 <a href="https://wa.me/8801717035081" target="_blank" rel="noopener noreferrer" class="chat-option">
-                    <i class="fab fa-whatsapp text-white"></i>
+                    <i class="fab fa-whatsapp text-green-500"></i>
                     <span>Chat on WhatsApp</span>
                 </a>
                 <a href="https://t.me/dizaraj" target="_blank" rel="noopener noreferrer" class="chat-option">
-                    <i class="fab fa-telegram text-white"></i>
+                    <i class="fab fa-telegram text-blue-400"></i>
                     <span>Chat on Telegram</span>
                 </a>
             </div>
@@ -298,7 +311,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
-            // --- Licensing Section Elements ---
+            // --- Element Selectors ---
             const purchaseCard = document.getElementById('purchaseCard');
             const licenseCard = document.getElementById('licenseCard');
             const domainInput = document.getElementById('domain');
@@ -308,18 +321,26 @@
             const licenseKeyEl = document.getElementById('licenseKey');
             const copyButton = document.getElementById('copyButton');
             const copyFeedback = document.getElementById('copyFeedback');
-
-            // --- Modal Elements ---
             const fab = document.getElementById('fab');
             const contactModal = document.getElementById('contactModal');
             const closeModal = document.getElementById('closeModal');
-
-            // --- Contact Form Elements ---
             const contactForm = document.getElementById('contactForm');
             const contactFeedback = document.getElementById('contactFeedback');
+            const paypalContainer = document.getElementById('paypal-button-container');
 
             // --- PayPal Integration ---
-            if (typeof paypal !== 'undefined') {
+
+            /**
+             * Initializes the PayPal buttons once the SDK is loaded.
+             */
+            function initializePayPalButtons() {
+                // Ensure the paypal object is available
+                if (typeof paypal === 'undefined') {
+                    console.error('PayPal SDK not loaded when trying to initialize buttons.');
+                    paypalContainer.innerHTML = '<p class="text-red-500 text-center">Could not load payment options. Please refresh the page.</p>';
+                    return;
+                }
+
                 paypal.Buttons({
                     onClick: (data, actions) => {
                         const domainValue = domainInput.value.trim();
@@ -333,28 +354,21 @@
                             return actions.resolve();
                         }
                     },
-                    // *** NEW: Call your backend to create the order ***
                     createOrder: () => {
-                        return fetch("/api/create-order", { // Calls your new server endpoint
+                        return fetch("/api/create-order", {
                             method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
+                            headers: { "Content-Type": "application/json" },
                         })
                             .then((response) => response.json())
                             .then((order) => order.id);
                     },
-
-                    // *** NEW: Call your backend to capture the order ***
                     onApprove: (data) => {
                         const domainValue = domainInput.value.trim();
                         const emailValue = emailInput.value.trim();
 
-                        return fetch("/api/capture-order", { // Calls your second server endpoint
+                        return fetch("/api/capture-order", {
                             method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
+                            headers: { "Content-Type": "application/json" },
                             body: JSON.stringify({
                                 orderID: data.orderID,
                                 domain: domainValue,
@@ -369,7 +383,6 @@
                             })
                             .then((orderData) => {
                                 console.log('Capture result', orderData);
-                                // The server now returns the license key after successful capture
                                 showLicenseCard(domainValue, orderData.licenseKey);
                             })
                             .catch(err => {
@@ -382,13 +395,46 @@
                         alert('An error occurred with your payment. Please try again or contact support.');
                     }
                 }).render('#paypal-button-container');
-            } else {
-                console.error('PayPal SDK not loaded.');
-                const paypalContainer = document.getElementById('paypal-button-container');
-                if (paypalContainer) {
-                    paypalContainer.innerHTML = '<p class="text-red-500 text-center">Could not load payment options. Please refresh the page or contact support.</p>';
+            }
+
+            /**
+             * Fetches the config from the server and dynamically loads the PayPal SDK.
+             */
+            async function loadPayPalSDK() {
+                try {
+                    const response = await fetch('/api/config');
+                    if (!response.ok) {
+                        throw new Error(`Failed to fetch PayPal config. Status: ${response.status}`);
+                    }
+                    const config = await response.json();
+                    const clientId = config.paypalClientId;
+
+                    if (!clientId) {
+                        throw new Error('PayPal Client ID was not provided by the server.');
+                    }
+
+                    const script = document.createElement('script');
+                    script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD`;
+                    // Set an onload event listener. This function will be called *after* the SDK script has been downloaded and executed.
+                    script.onload = () => {
+                        console.log('PayPal SDK script loaded successfully.');
+                        initializePayPalButtons();
+                    };
+                    // Handle errors in loading the script itself (e.g., network issue)
+                    script.onerror = () => {
+                        throw new Error('The PayPal SDK script failed to load.');
+                    };
+
+                    document.head.appendChild(script);
+
+                } catch (error) {
+                    console.error('Error during PayPal SDK setup:', error);
+                    paypalContainer.innerHTML = '<p class="text-red-500 text-center">Could not initialize payment options. Please contact support.</p>';
                 }
             }
+
+            // Start the process of loading the PayPal SDK
+            loadPayPalSDK();
 
 
             function showLicenseCard(domain, key) {
@@ -432,44 +478,32 @@
                 contactForm.addEventListener('submit', (e) => {
                     e.preventDefault();
                     contactFeedback.textContent = 'Sending...';
-                    // Reset classes for feedback text
                     contactFeedback.className = 'text-center mt-4 h-5 text-blue-500';
 
-                    // Get form data
                     const formData = new FormData(contactForm);
                     const data = Object.fromEntries(formData.entries());
 
-                    // Send the data to your backend server
                     fetch('/api/send-email', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data),
                     })
                         .then(response => {
-                            // If the server response is not OK, we need to handle the error
                             if (!response.ok) {
-                                return response.json().then(err => {
-                                    // Throw an error with the message from the server
-                                    throw new Error(err.message || 'An unknown error occurred.');
-                                });
+                                return response.json().then(err => { throw new Error(err.message || 'An unknown error occurred.'); });
                             }
                             return response.json();
                         })
                         .then(result => {
-                            // Handle success from the server
                             contactFeedback.textContent = result.message;
                             contactFeedback.className = 'text-center mt-4 h-5 text-green-600';
                             contactForm.reset();
                         })
                         .catch(err => {
-                            // Handle any errors from the fetch or the server
                             contactFeedback.textContent = err.message;
                             contactFeedback.className = 'text-center mt-4 h-5 text-red-500';
                         })
                         .finally(() => {
-                            // Clear the feedback message after 5 seconds
                             setTimeout(() => contactFeedback.textContent = '', 5000);
                         });
                 });
